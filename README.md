@@ -1,5 +1,7 @@
 ## Discord bot
 
+A personal-use discord bot written for a friend's server.
+
 ### Commands
 
 - !time: prints the current date and time
