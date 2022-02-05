@@ -1,4 +1,4 @@
-## Discord bot
+# Discord Bot
 
 A personal-use discord bot written for a friend's server.
 
