@@ -11,20 +11,21 @@ const client = new Client({
   intents: new Discord.Intents(32767) // all permissions granted
 });
 
-// load api key from config
+// load api key and prefix from config
 const config = require("./config.json");
+const prefix = config.prefix;
 
 // !time: print time of day
 client.on("messageCreate", (message) => {
-  if (message.content.startsWith("!time")) {
+  if (message.content.startsWith( prefix +"time" )) {
     message.channel.send(getDateTime());
   }
 })
 
 // !textchannel: create text channel
 client.on("messageCreate", message => {
-    if (message.content.includes("!textchannel")) {
-        const channelName = message.content.replace('!textchannel','');
+    if (message.content.includes( prefix + "textchannel" )) {
+        const channelName = message.content.replace( prefix + 'textchannel','');
         message.guild.channels.create(channelName, {
             type: "GUILD_TEXT", // syntax has changed a bit
             permissionOverwrites: [{ // same as before
@@ -38,12 +39,12 @@ client.on("messageCreate", message => {
 
 // !nickname: change server nicknames
 client.on("messageCreate", (message) => {
-  if (message.content.includes('!nickname')) {
+  if (message.content.includes( prefix + 'nickname' )) {
 
     // change another member's nickname
     if (message.mentions.members.first()) {
       let mentionedMember = message.mentions.members.first();
-      var newName = message.content.replace('!nickname','');
+      var newName = message.content.replace( prefix + 'nickname','');
       var tempName = '';
 
       // (first two indices are an empty space and the member-id)
@@ -58,7 +59,7 @@ client.on("messageCreate", (message) => {
 
   // change user's own nickname if no other member is specified
   } else {
-      message.member.setNickname(message.content.replace('!nickname ', ''));
+      message.member.setNickname(message.content.replace( prefix + 'nickname ', ''));
     }
   }
 })
@@ -105,5 +106,5 @@ function getDateTime() {
 
 }
 
-// login using token
+// login
 client.login(config.token);
