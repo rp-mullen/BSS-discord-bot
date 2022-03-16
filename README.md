@@ -3,6 +3,10 @@
 ## Description
 A personal-use discord bot written for a friend's server.
 
+```
+node bot.js
+```
+
 ### Commands
 
 - !time: prints the current date and time
