@@ -1,5 +1,6 @@
 # Discord Bot
 
+## Description
 A personal-use discord bot written for a friend's server.
 
 ### Commands
