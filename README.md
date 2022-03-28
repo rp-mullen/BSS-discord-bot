@@ -3,6 +3,8 @@
 ## Description
 A personal-use discord bot written for a friend's server.
 
+## Usage
+To start the bot, run the following command:
 ```
 node bot.js
 ```
