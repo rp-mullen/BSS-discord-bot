@@ -1,4 +1,4 @@
-# Discord Bot
+# BSS Discord Bot
 
 ## Description
 A personal-use discord bot written for a friend's server. Built as a utlility for server members to quickly create text channels and change nicknames, additional functionalities added occasionally.
