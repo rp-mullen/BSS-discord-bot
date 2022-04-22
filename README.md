@@ -4,7 +4,7 @@
 A personal-use discord bot written for a friend's server. Built as a utlility for server members to quickly create text channels and change nicknames, additional functionalities added occasionally.
 
 ## Usage
-To start the bot, run the following command:
+To start the bot, open a terminal from the program directory and run the following command:
 ```
 node bot.js
 ```
