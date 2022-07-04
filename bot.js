@@ -2,27 +2,24 @@
 // Description: A discord bot programmed for personal use in
 // friends' discord server
 
-// import API
 const { Client, Intents } = require("discord.js");
 const Discord = require('discord.js');
 
-// instantiate client
 const client = new Client({
   intents: new Discord.Intents(32767) // all permissions granted
 });
 
-// load api key and prefix from config
 const config = require("./config.json");
 const prefix = config.prefix;
 
-// !time: print time of day
+// time: print time of day
 client.on("messageCreate", (message) => {
   if (message.content.startsWith( prefix +"time" )) {
     message.channel.send(getDateTime());
   }
 })
 
-// !textchannel: create text channel
+// textchannel: create text channel
 client.on("messageCreate", message => {
     if (message.content.includes( prefix + "textchannel" )) {
         const channelName = message.content.replace( prefix + 'textchannel','');
@@ -37,7 +34,7 @@ client.on("messageCreate", message => {
     }
 })
 
-// !nickname: change server nicknames
+// nickname: change server nicknames
 client.on("messageCreate", (message) => {
   if (message.content.includes( prefix + 'nickname' )) {
 
@@ -57,7 +54,6 @@ client.on("messageCreate", (message) => {
       newName = tempName;
       mentionedMember.setNickname(newName);
 
-  // change user's own nickname if no other member is specified
   } else {
       message.member.setNickname(message.content.replace( prefix + 'nickname ', ''));
     }
@@ -65,14 +61,13 @@ client.on("messageCreate", (message) => {
 })
 
 
-// on startup: register guild and member list on the backend
+// on startup: register guild and member list
 client.on("ready", () => {
     // main guild: brokeside
     let guild = client.guilds.cache.get(config.serverId);
     if (!guild)
       return console.log(`Can't find any guild with the ID`);
 
-    // print guild occupancy and member log
     const Guilds = client.guilds.cache.map(guild => guild.id);
     console.log(Guilds);
     const Members = guild.members.cache.map(member => member.user.username);
@@ -80,7 +75,6 @@ client.on("ready", () => {
 
 });
 
-// datetime function
 function getDateTime() {
 
     var date = new Date();
@@ -106,5 +100,4 @@ function getDateTime() {
 
 }
 
-// login
 client.login(config.token);
